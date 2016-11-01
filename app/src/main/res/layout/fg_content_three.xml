@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.chenxuanhe.heart.Util.CircleImageView">
+    android:orientation="vertical"
+    tools:context="com.example.chenxuanhe.heart.Util.CircleImageView"
+    android:weightSum="1">
 
     <com.example.chenxuanhe.heart.Util.CircleImageView
         android:paddingTop="20dp"
@@ -15,5 +17,209 @@
         android:layout_centerHorizontal="true"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/my_Id"
+            android:text="ID"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/my_Sex"
+            android:text="性别"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#000000" />
+
+    <TableLayout
+        android:id="@+id/MorePageTableLayout_Follow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="1dp"
+        android:shrinkColumns="0"
+        android:stretchColumns="0">
+
+        <TableRow
+            android:id="@+id/my_guanli"
+            android:clickable="true"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" >
+
+            <TextView
+                android:id="@+id/my_guanli1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17dp"
+                android:text="账号管理"
+                android:textColor="#ff333333"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:paddingRight="20.0dip"
+                android:src="@drawable/yousanjiao" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#F6F7F7" />
+
+        <TableRow
+            android:id="@+id/my_xiangguan"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" >
+
+            <TextView
+                android:id="@+id/my_xiangguan1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17dp"
+                android:text="与我相关"
+                android:textColor="#ff333333"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:paddingRight="20dp"
+                android:src="@drawable/yousanjiao" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#F6F7F7" />
+
+        <TableRow
+            android:id="@+id/my_sixin"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" >
+
+            <TextView
+                android:id="@+id/my_sixin1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17dp"
+                android:text="我的私信"
+                android:textColor="#ff333333"
+                android:textSize="18dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:paddingRight="20dp"
+                android:src="@drawable/yousanjiao" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#F6F7F7" />
+
+        <TableRow
+            android:id="@+id/my_dengji"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" >
+
+            <TextView
+                android:id="@+id/my_dengji1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17dp"
+                android:text="我的等级"
+                android:textColor="#ff333333"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:paddingRight="20dp"
+                android:src="@drawable/yousanjiao" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#F6F7F7" />
+
+        <TableRow
+            android:id="@+id/my_setting"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp" >
+
+            <TextView
+                android:id="@+id/my_setting1"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="17dp"
+                android:text="设置"
+                android:textColor="#ff333333"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:paddingRight="20dp"
+                android:src="@drawable/yousanjiao" />
+        </TableRow>
+
+    </TableLayout>
+
+
+
+</LinearLayout>
