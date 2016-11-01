@@ -7,16 +7,12 @@
     tools:context="com.example.chenxuanhe.heart.MainActivity">
 
 
-
-
-        <TextView
-            android:textSize="20sp"
-            android:text="44444444444444"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="44444444444444"
+        android:textSize="20sp" />
 
 
 </RelativeLayout>
