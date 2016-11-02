@@ -1,6 +1,7 @@
 package com.example.chenxuanhe.heart;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +10,18 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chenxuanhe.heart.MyView.DengJiActivity;
+import com.example.chenxuanhe.heart.MyView.GuanLiActivity;
+import com.example.chenxuanhe.heart.MyView.SettingActivity;
+import com.example.chenxuanhe.heart.MyView.SiXinActivity;
+import com.example.chenxuanhe.heart.MyView.XiangGuanActivity;
+
 /**
  * Created by chenxuanhe on 2016/10/28.
  */
 
 public class FragmentActivity3 extends Fragment implements View.OnClickListener{
 
-    private String content;
 
 
     private TableRow guanli;
@@ -54,18 +60,33 @@ public class FragmentActivity3 extends Fragment implements View.OnClickListener{
     public void onClick(View v){
         switch (v.getId()){
             case R.id.my_guanli:
+                doIntent(GuanLiActivity.class);
                 Toast.makeText(getActivity(), "sssssssssssssssss", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_xiangguan:
+                doIntent(XiangGuanActivity.class);
                 Toast.makeText(getActivity(), "aaaaaaaaaaaa", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.my_sixin:
+                doIntent(SiXinActivity.class);
                 break;
             case R.id.my_dengji:
+                doIntent(DengJiActivity.class);
                 break;
             case R.id.my_setting:
+                doIntent(SettingActivity.class);
                 break;
         }
+    }
+
+    /**
+     * 写的跳转，简化代码
+     * @param activity
+     */
+    public void doIntent(Class activity){
+        Intent intent = new Intent();
+        intent.setClass(getActivity(),activity);
+        startActivity(intent);
     }
 
 
