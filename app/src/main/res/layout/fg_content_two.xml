@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="44444444444444"
+        android:text="聊天系统，最后开发~~~"
         android:textSize="20sp" />
 
 

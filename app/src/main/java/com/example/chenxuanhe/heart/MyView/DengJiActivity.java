@@ -29,10 +29,11 @@ public class DengJiActivity extends AppCompatActivity {
     public void setTitle(){
         toolbar = (Toolbar) findViewById(R.id.Tool_bar_my_dengji);
         center_title = (TextView) findViewById(R.id.centertitle_dengji);
-        toolbar.setNavigationIcon(R.drawable.chat);
+        toolbar.setNavigationIcon(R.drawable.backoff);
         setSupportActionBar(toolbar);
         setTitle("");
         center_title.setText("我的等级");
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -41,13 +42,5 @@ public class DengJiActivity extends AppCompatActivity {
         });
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case android.R.id.home:
-                this.finish();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
 }

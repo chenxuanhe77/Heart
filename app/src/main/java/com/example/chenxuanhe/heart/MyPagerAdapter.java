@@ -1,5 +1,6 @@
 package com.example.chenxuanhe.heart;
 
+import android.app.Activity;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,11 @@ public class MyPagerAdapter extends PagerAdapter {
 
     private ArrayList<View> viewLists;
     private ArrayList<String> titleLists;
+    private Activity activity;
 
-    public MyPagerAdapter(){}
+    public MyPagerAdapter(Activity activity){
+        this.activity = activity;
+    }
 
     public MyPagerAdapter(ArrayList<View> viewLists) {
         this.viewLists = viewLists;

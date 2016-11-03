@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 初始化viewpage都没有被点击
+     * 初始化fragent都没有被点击
      */
     private void setSelect(){
         txt_lingting1.setSelected(false);

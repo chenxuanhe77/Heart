@@ -38,25 +38,34 @@ public class FragmentActivity1  extends Fragment implements View.OnClickListener
     private int one = 0 ;
     private int two = 0;
 
+    private TextView tv;
+
+    private ArrayList<View> viewList;
+
+    View view1,view2,view3;
+
 
     private String content;
 
     public FragmentActivity1(){}
 
-    public FragmentActivity1(String content) {
+    /*public FragmentActivity1(String content) {
         this.content=content;
-    }
+    }*/
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
         View view = inflater.inflate(R.layout.fg_content_one,container,false);
         viewPager = (ViewPager) view.findViewById(R.id.viewpage);
         line = (ImageView) view.findViewById(R.id.down_Line);
         tuijian = (TextView) view.findViewById(R.id.tuijian);
         zuixin = (TextView) view.findViewById(R.id.zuixin);
         guanzhu = (TextView) view.findViewById(R.id.guanzhu);
+
         initView();
         return view;
     }
+
 
     /**
      * 绑定，计算偏移量滑动
@@ -82,11 +91,13 @@ public class FragmentActivity1  extends Fragment implements View.OnClickListener
         viewPager.setAdapter(new MyPagerAdapter(listViews));
         viewPager.setCurrentItem(0);
 
+
         tuijian.setOnClickListener(this);
         zuixin.setOnClickListener(this);
         guanzhu.setOnClickListener(this);
 
         viewPager.addOnPageChangeListener(this);
+
     }
 
     /**

@@ -3,6 +3,7 @@ package com.example.chenxuanhe.heart.MyView;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.chenxuanhe.heart.R;
@@ -26,8 +27,18 @@ public class GuanLiActivity extends AppCompatActivity {
     public void setTitle(){
         toolbar = (Toolbar) findViewById(R.id.Tool_bar_my_guanli);
         center_title = (TextView) findViewById(R.id.centertitle_guanli);
+        toolbar.setNavigationIcon(R.drawable.backoff);
         setSupportActionBar(toolbar);
         setTitle("");
         center_title.setText("账号管理");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                GuanLiActivity.this.finish();
+            }
+        });
     }
+
+
 }

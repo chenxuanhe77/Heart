@@ -91,7 +91,6 @@
         android:layout_above="@id/line_tab1"
         android:id="@+id/frag_of_all1">
 
-
     </FrameLayout>
 
 </RelativeLayout>
