@@ -16,5 +16,7 @@ public class ChatActivity  extends AppCompatActivity {
         setContentView(R.layout.fg_content_two);
     }
 
+
+
 }
 

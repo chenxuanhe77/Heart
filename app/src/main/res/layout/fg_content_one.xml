@@ -39,7 +39,7 @@
    </LinearLayout>
 
    <ImageView
-       android:id="@+id/down_Line1"
+       android:id="@+id/down_Line"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:src="@drawable/line"

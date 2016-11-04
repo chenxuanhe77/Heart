@@ -27,4 +27,6 @@ public class FragmentActivity2 extends android.support.v4.app.Fragment{
         View view = inflater.inflate(R.layout.fg_content_two,container,false);
         return view;
     }
+
+
 }

@@ -19,6 +19,7 @@ public class Page2 extends android.support.v4.app.Fragment {
 
     public Page2(){}
 
+
     public Page2(Fragment fg){
         this.fg5=fg;
     }

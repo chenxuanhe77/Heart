@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txt_lingting1.performClick();
     }
 
+
     /**
      * 初始绑定，设置监听
      */
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txt_chat1.setOnClickListener(this);
         txt_my1.setOnClickListener(this);
     }
+
 
     /**
      * 隐藏其他frag

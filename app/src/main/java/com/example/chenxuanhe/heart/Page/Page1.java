@@ -18,6 +18,7 @@ import com.example.chenxuanhe.heart.R;
 public class Page1 extends android.support.v4.app.Fragment {
 
 
+    private TextView tv;
     private String content;
     private FragmentActivity fg4;
 
