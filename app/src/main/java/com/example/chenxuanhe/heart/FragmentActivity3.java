@@ -20,7 +20,7 @@ import com.example.chenxuanhe.heart.MyView.XiangGuanActivity;
  * Created by chenxuanhe on 2016/10/28.
  */
 
-public class FragmentActivity3 extends Fragment implements View.OnClickListener{
+public class FragmentActivity3 extends android.support.v4.app.Fragment implements View.OnClickListener{
 
 
 

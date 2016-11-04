@@ -85,11 +85,12 @@
         android:layout_above="@id/tab_of_three"/>
 
     <FrameLayout
+        android:id="@+id/frag_of_all1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/Tool_bar1"
         android:layout_above="@id/line_tab1"
-        android:id="@+id/frag_of_all1">
+        >
 
     </FrameLayout>
 

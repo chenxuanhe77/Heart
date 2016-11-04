@@ -1,5 +1,8 @@
 package com.example.chenxuanhe.heart;
 
+import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,13 +25,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public Toolbar toolbar;
     private TextView center_title;
 
-    private android.app.FragmentManager fManager;
+    private android.support.v4.app.FragmentManager fManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        fManager = getFragmentManager();
+        fManager = getSupportFragmentManager();
         bindView();
         txt_lingting1.performClick();
     }
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 隐藏其他frag
      * @param fgTransaction
      */
-    private void hideFragment(android.app.FragmentTransaction fgTransaction){
+    private void hideFragment(FragmentTransaction fgTransaction){
         if(fg1!=null)fgTransaction.hide(fg1);
         if(fg2!=null)fgTransaction.hide(fg2);
         if(fg3!=null)fgTransaction.hide(fg3);
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param view
      */
     public void onClick(View view){
-        android.app.FragmentTransaction fragmentTransaction = fManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = fManager.beginTransaction();
         hideFragment(fragmentTransaction);
         switch (view.getId()){
             case R.id.txt_lingting1:
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setSelect();
                 txt_chat1.setSelected(true);
                 if(fg2==null){
-                    fg2 = new FragmentActivity2(fg2);
+                    fg2 = new FragmentActivity2();
                     fragmentTransaction.add(R.id.frag_of_all1,fg2);
 
                 }else{

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
  * Created by chenxuanhe on 2016/10/28.
  */
 
-public class FragmentActivity2 extends Fragment{
+public class FragmentActivity2 extends android.support.v4.app.Fragment{
 
     private String content;
 
