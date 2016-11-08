@@ -4,6 +4,8 @@ package com.example.chenxuanhe.heart;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.DisplayMetrics;
@@ -12,8 +14,12 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.chenxuanhe.heart.Page.Page1;
 import com.example.chenxuanhe.heart.Page.Page2;
@@ -87,7 +93,17 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
 
         tuijian.performClick();
 
+        setLine();
+
         return view;
+    }
+
+    public void setmargin(){
+        LinearLayout layout = (LinearLayout) getActivity().findViewById(R.id.ddd);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        params.setMargins(5, 5, 5, 5);
+        layout.addView(line);
     }
 
 
@@ -116,6 +132,7 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
                 if(event1.getX() - event2.getX() > Distance && Math.abs(velocityX) > xDistance ){
                     fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg5).commit();
                     Mark =1;
+                    setmargin();
                 }else {
                     return false;
                 }
@@ -146,7 +163,9 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
     }
 
 
-
+    /**
+     * 图片底线的偏移量计算
+     */
     public void setLine(){
         bmpWidth = BitmapFactory.decodeResource(getResources(),R.drawable.line).getWidth();
         DisplayMetrics dm = new DisplayMetrics();
@@ -159,6 +178,40 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         one = pianyiliang * 2 + bmpWidth;
         two = one * 2;
     }
+
+    public void ViewSelected(int Mark ){
+        Animation animation = null;
+        currIndex = Mark;
+        switch (Mark){
+            case 0:
+                if(currIndex ==1){
+                    animation = new TranslateAnimation(one,0,0,0);
+                }else if(currIndex == 2){
+                    for(int m = 0;m <=1;m++) {
+                        animation = new TranslateAnimation(two, 0, 0, 0);
+                    }
+                }
+                break;
+            case 1:
+                if (currIndex == 0) {
+                    animation = new TranslateAnimation(pianyiliang, one, 0, 0);
+                } else if (currIndex == 2) {
+                    animation = new TranslateAnimation(two, one, 0, 0);
+                }
+                break;
+            case 2:
+                if (currIndex == 0) {
+                    animation = new TranslateAnimation(pianyiliang, two, 0, 0);
+                } else if (currIndex == 1) {
+                    animation = new TranslateAnimation(one, two, 0, 0);
+                }
+                break;
+        }
+        animation.setFillAfter(true);
+        animation.setDuration(300);
+        line.startAnimation(animation);
+
+        }
 
 
     /**
