@@ -1,25 +1,18 @@
 package com.example.chenxuanhe.heart;
 
 
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GestureDetectorCompat;
-import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.TranslateAnimation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.chenxuanhe.heart.Page.Page1;
 import com.example.chenxuanhe.heart.Page.Page2;
@@ -89,83 +82,17 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         zuixin.setOnClickListener(this);
         guanzhu.setOnClickListener(this);
 
-        initfrag();
+        initfrag();  //全部点击frag
 
         tuijian.performClick();
-
-        setLine();
 
         return view;
     }
 
-    public void setmargin(){
-        LinearLayout layout = (LinearLayout) getActivity().findViewById(R.id.ddd);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT);
-        params.setMargins(5, 5, 5, 5);
-        layout.addView(line);
-    }
 
-
-    /**
-     * 重写滑动Listener，onDown是入口，必须写true
-     */
-    private class MyGuetureListener extends GestureDetector.SimpleOnGestureListener{
-
-        @Override
-        public boolean onDown(MotionEvent event){
-            return  true;
-        }
-
-        /**
-         * 设置滑动时间，每个Mark值响应执行
-         * @param event1
-         * @param event2
-         * @param velocityX
-         * @param velocityY
-         * @return
-         */
-        @Override
-        public boolean onFling(MotionEvent event1, MotionEvent event2,
-                               float velocityX, float velocityY) {
-            if(Mark == 0){
-                if(event1.getX() - event2.getX() > Distance && Math.abs(velocityX) > xDistance ){
-                    fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg5).commit();
-                    Mark =1;
-                    setmargin();
-                }else {
-                    return false;
-                }
-            }
-
-            else  if(Mark ==1){
-                if(event1.getX() - event2.getX() > Distance && Math.abs(velocityX) > xDistance){
-                    fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg6).commit();
-                    Mark =2;
-                }else if( event2.getX() - event1.getX() >Distance && Math.abs(velocityX) > xDistance) {
-                    fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg4).commit();
-                    Mark = 0;
-                }
-            }
-
-            else if(Mark ==2){
-                if(event2.getX() - event1.getX() > Distance && Math.abs(velocityX) > xDistance ){
-                    fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg5).commit();
-                    Mark = 1;
-                }else {
-                    return true;
-                }
-            }
-
-            return true;
-        }
-
-    }
-
-
-    /**
+   /* /**
      * 图片底线的偏移量计算
-     */
+     *
     public void setLine(){
         bmpWidth = BitmapFactory.decodeResource(getResources(),R.drawable.line).getWidth();
         DisplayMetrics dm = new DisplayMetrics();
@@ -177,41 +104,7 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         line.setImageMatrix(matrix);
         one = pianyiliang * 2 + bmpWidth;
         two = one * 2;
-    }
-
-    public void ViewSelected(int Mark ){
-        Animation animation = null;
-        currIndex = Mark;
-        switch (Mark){
-            case 0:
-                if(currIndex ==1){
-                    animation = new TranslateAnimation(one,0,0,0);
-                }else if(currIndex == 2){
-                    for(int m = 0;m <=1;m++) {
-                        animation = new TranslateAnimation(two, 0, 0, 0);
-                    }
-                }
-                break;
-            case 1:
-                if (currIndex == 0) {
-                    animation = new TranslateAnimation(pianyiliang, one, 0, 0);
-                } else if (currIndex == 2) {
-                    animation = new TranslateAnimation(two, one, 0, 0);
-                }
-                break;
-            case 2:
-                if (currIndex == 0) {
-                    animation = new TranslateAnimation(pianyiliang, two, 0, 0);
-                } else if (currIndex == 1) {
-                    animation = new TranslateAnimation(one, two, 0, 0);
-                }
-                break;
-        }
-        animation.setFillAfter(true);
-        animation.setDuration(300);
-        line.startAnimation(animation);
-
-        }
+    }*/
 
 
     /**
@@ -244,7 +137,6 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         guanzhu.performClick();
     }
 
-
     public void onClick(View view){
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragManager.beginTransaction();
         hidefrag(fragmentTransaction);
@@ -258,7 +150,6 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
                 }else {
                     fragmentTransaction.show(fg4);
                 }
-              //  Mark =0;
                 break;
             case R.id.zuixin:
                 fgselect();
@@ -269,7 +160,6 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
             }else {
                     fragmentTransaction.show(fg5);
                 }
-            //    Mark =1;
                 break;
             case R.id.guanzhu:
                 fgselect();
@@ -280,9 +170,114 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
                 }else {
                     fragmentTransaction.show(fg6);
                 }
-             //   Mark =2;
                 break;
         }fragmentTransaction.commit();
+    }
+
+    /**
+     * 重写滑动Listener，onDown是入口，必须写true
+     */
+    private class MyGuetureListener extends GestureDetector.SimpleOnGestureListener{
+
+        @Override
+        public boolean onDown(MotionEvent event){
+            return  true;
+        }
+
+        /**
+         * 设置滑动时间，每个Mark值响应执行
+         * @param event1
+         * @param event2
+         * @param velocityX
+         * @param velocityY
+         * @return
+         */
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2,
+                               float velocityX, float velocityY) {
+            if(Mark == 0){
+                if(event1.getX() - event2.getX() > Distance && Math.abs(velocityX) > xDistance ){
+                    fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg5).commit();
+                    Mark =1;
+                    transright1_2();
+                }else {
+                    return false;
+                }
+            }
+
+            else  if(Mark ==1){
+                if(event1.getX() - event2.getX() > Distance && Math.abs(velocityX) > xDistance){
+                    fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg6).commit();
+                    Mark =2;
+                    transright2_3();
+                }else if( event2.getX() - event1.getX() >Distance && Math.abs(velocityX) > xDistance) {
+                    fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg4).commit();
+                    Mark = 0;
+                    transleft2_1();
+                }
+            }
+
+            else if(Mark ==2){
+                if(event2.getX() - event1.getX() > Distance && Math.abs(velocityX) > xDistance ){
+                    fragManager.beginTransaction().hide(fg4).hide(fg5).hide(fg6).show(fg5).commit();
+                    Mark = 1;
+                    transleft3_2();
+                }else {
+                    return true;
+                }
+            }
+            return true;
+        }
+    }
+
+
+    /**
+     * 往右移一个单位33.3%
+     */
+    public void transright1_2(){
+        Animation animation = AnimationUtils.loadAnimation(this.getActivity(),R.anim.translate_right_1_2);
+        animation.setFillAfter(true);
+        line.startAnimation(animation);
+    }
+    /**
+     * 往右移一个单位33.3%
+     */
+    public void transright2_3(){
+        Animation animation = AnimationUtils.loadAnimation(this.getActivity(),R.anim.translate_right_2_3);
+        animation.setFillAfter(true);
+        line.startAnimation(animation);
+    }
+    /**
+     * 往左移一个单位33.3%
+     */
+    public void transleft3_2(){
+        Animation animation = AnimationUtils.loadAnimation(this.getActivity(),R.anim.translate_left_3_2);
+        animation.setFillAfter(true);
+        line.startAnimation(animation);
+    }
+    /**
+     * 往左移一个单位33.3%
+     */
+    public void transleft2_1(){
+        Animation animation = AnimationUtils.loadAnimation(this.getActivity(),R.anim.translate_left_2_1);
+        animation.setFillAfter(true);
+        line.startAnimation(animation);
+    }
+    /**
+     * 往右移二个单位66.6%
+     */
+    public void transleft1_3(){
+        Animation animation = AnimationUtils.loadAnimation(this.getActivity(),R.anim.translate_right_1_3);
+        animation.setFillAfter(true);
+        line.startAnimation(animation);
+    }
+    /**
+     * 往左移一个单位66.6%
+     */
+    public void transleft3_1(){
+        Animation animation = AnimationUtils.loadAnimation(this.getActivity(),R.anim.translate_left_3_1);
+        animation.setFillAfter(true);
+        line.startAnimation(animation);
     }
 
 }
