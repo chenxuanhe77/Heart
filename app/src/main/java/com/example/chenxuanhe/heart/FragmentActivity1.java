@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.chenxuanhe.heart.Page.Page1;
 import com.example.chenxuanhe.heart.Page.Page2;
 import com.example.chenxuanhe.heart.Page.Page3;
@@ -33,13 +34,11 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
     private TextView zuixin;
     private TextView guanzhu;
     private FragmentManager fragManager;
-
     private ImageView line;
-    private int currIndex= 0 ;
-    private int bmpWidth;
-    private int pianyiliang = 0;
-    private int one = 0 ;
-    private int two = 0;
+
+
+
+
 
     /**
      * 定义手势检测实例
@@ -67,7 +66,6 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
             public boolean onTouch(View view,MotionEvent event){
                 return detector.onTouchEvent(event);
             }
-
         });
 
         fragManager = getChildFragmentManager();
@@ -77,6 +75,7 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         zuixin = (TextView) view.findViewById(R.id.zuixin);
         guanzhu = (TextView) view.findViewById(R.id.guanzhu);
         line = (ImageView) view.findViewById(R.id.down_Line);
+
 
         tuijian.setOnClickListener(this);
         zuixin.setOnClickListener(this);
@@ -279,5 +278,6 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         animation.setFillAfter(true);
         line.startAnimation(animation);
     }
+
 
 }
