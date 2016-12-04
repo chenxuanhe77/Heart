@@ -1,13 +1,11 @@
 package com.example.chenxuanhe.heart;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableRow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.chenxuanhe.heart.MyView.DengJiActivity;
@@ -32,9 +30,6 @@ public class FragmentActivity3 extends android.support.v4.app.Fragment implement
 
 
     public FragmentActivity3(){}
-
-    /*public FragmentActivity3(Fragment fg){
-    }*/
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){

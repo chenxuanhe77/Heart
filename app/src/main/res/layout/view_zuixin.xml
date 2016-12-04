@@ -10,12 +10,12 @@
         android:layout_height="50dp" />
 
     <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeLayout"
+        android:id="@+id/swipeLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_guanzhu"
+            android:id="@+id/recyclerview_zuixin"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
 

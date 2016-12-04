@@ -27,7 +27,7 @@ public class Page1 extends android.support.v4.app.Fragment {
     private Adapter1 myAdapter;
     private List<Gongju> gongjus = new ArrayList<>();
 
-    private SwipeRefreshLayout mswiperefresh;
+    private SwipeRefreshLayout mswiperefresh1;
 
     public Page1(){}
 
@@ -41,16 +41,15 @@ public class Page1 extends android.support.v4.app.Fragment {
         recyclerView.setHasFixedSize(true);
         myAdapter = new Adapter1(getContext(),gongjus);
         recyclerView.setAdapter(myAdapter);
-        mswiperefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout1);
+        mswiperefresh1 = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout1);
 
-        mswiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
-
+        //使加载dialog消失
+        mswiperefresh1.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
             @Override
             public void onRefresh() {
-                mswiperefresh.setRefreshing(false);
+                mswiperefresh1.setRefreshing(false);
             }
         });
-
 
         return view;
     }

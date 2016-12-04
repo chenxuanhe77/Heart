@@ -8,7 +8,6 @@ public class Gongju {
 
     public String txtmessage;
 
-
     public Gongju(String txtmessage){
         this.txtmessage = txtmessage;
     }
