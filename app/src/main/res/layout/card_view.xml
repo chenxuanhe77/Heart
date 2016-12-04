@@ -94,7 +94,8 @@
                 android:src="@drawable/goodjob"/>
 
             <TextView
-                android:text="11"
+                android:id="@+id/goodjob_number"
+                android:text="0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
