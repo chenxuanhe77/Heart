@@ -1,91 +1,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/linear_top"
+    <TextView
+        android:gravity="center_vertical|center_horizontal"
+        android:text="222222"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:gravity="center"
-        android:orientation="horizontal" >
+        android:layout_height="50dp" />
 
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1.0"
-            android:gravity="center"
-            android:text="LOGO"
-            android:textColor="#000000"
-            android:textSize="30dip" />
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/category_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="#FFFFFF"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:id="@+id/linearLayout1"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_guanzhu"
             android:layout_width="fill_parent"
-            android:layout_height="50.0dip"
-            android:background="#FFFFFF" >
+            android:layout_height="fill_parent" />
 
-            <TextView
-                android:id="@+id/tv_youngfootable"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="青年足球"
-                android:textColor="#579908"
-                android:textSize="15.0dip" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-            <TextView
-                android:id="@+id/tv_midfield"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="中场"
-                android:textColor="#000000"
-                android:textSize="15.0dip" />
-
-            <TextView
-                android:id="@+id/tv_forward"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="前锋"
-                android:textColor="#000000"
-                android:textSize="15.0dip" />
-
-            <TextView
-                android:id="@+id/tv_guard"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:text="后卫"
-                android:textColor="#000000"
-                android:textSize="15.0dip" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linear_bg"
-            android:layout_width="fill_parent"
-            android:layout_height="1dp"
-            android:orientation="vertical" >
-        </LinearLayout>
-    </LinearLayout>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
 
 </LinearLayout>

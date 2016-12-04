@@ -82,7 +82,7 @@
                 android:layout_height="fill_parent"
                 android:layout_gravity="right"
                 android:gravity="center_vertical"
-                android:paddingRight="20.0dip"
+                android:paddingRight="20dip"
                 android:src="@drawable/yousanjiao" />
         </TableRow>
 

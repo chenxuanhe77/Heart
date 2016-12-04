@@ -1,6 +1,7 @@
 package com.example.chenxuanhe.heart.Page;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,6 +27,8 @@ public class Page1 extends android.support.v4.app.Fragment {
     private Adapter1 myAdapter;
     private List<Gongju> gongjus = new ArrayList<>();
 
+    private SwipeRefreshLayout mswiperefresh;
+
     public Page1(){}
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -38,12 +41,18 @@ public class Page1 extends android.support.v4.app.Fragment {
         recyclerView.setHasFixedSize(true);
         myAdapter = new Adapter1(getContext(),gongjus);
         recyclerView.setAdapter(myAdapter);
+        mswiperefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout1);
+
+        mswiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+
+            @Override
+            public void onRefresh() {
+                mswiperefresh.setRefreshing(false);
+            }
+        });
 
 
         return view;
     }
-
-
-
-
 }
+
