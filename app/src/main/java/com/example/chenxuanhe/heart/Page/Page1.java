@@ -34,14 +34,17 @@ public class Page1 extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.view_tuijian,container,false);
 
-        gongjus.add(new Gongju("111111"));
-        gongjus.add(new Gongju("!331311313"));
+        for (int i =0;i<100;i++) {
+            gongjus.add(new Gongju("111111"));
+            gongjus.add(new Gongju("!331311313"));
+        }
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_tuijian); //拿到recyclerview
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setHasFixedSize(true);
         myAdapter = new Adapter1(getContext(),gongjus);
         recyclerView.setAdapter(myAdapter);
         mswiperefresh1 = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout1);
+
 
         //使加载dialog消失
         mswiperefresh1.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){

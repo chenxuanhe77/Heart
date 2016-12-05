@@ -1,15 +1,15 @@
 package com.example.chenxuanhe.heart;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener  {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     /*fragment所需控件*/
     private TextView txt_lingting1;
@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentActivity1 fg1;
     private FragmentActivity2 fg2;
     private FragmentActivity3 fg3;
+
+
 
     //toolbar和居中的title
     public Toolbar toolbar;
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         fManager = getSupportFragmentManager();
         bindView();
-
         txt_lingting1.performClick();
 
     }
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txt_chat1.setOnClickListener(this);
         txt_my1.setOnClickListener(this);
     }
-
 
 
     /**

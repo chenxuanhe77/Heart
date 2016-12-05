@@ -1,62 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ddd"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.example.chenxuanhe.heart.FragmentActivity1">
 
-   <LinearLayout
-       android:background="#FFFFFF"
-       android:layout_width="match_parent"
-       android:layout_height="60dp">
+    <LinearLayout
+        android:background="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
 
-      <TextView
-          android:id="@+id/tuijian"
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:layout_weight="1"
-          android:text="推荐"
-          android:gravity="center"
-          android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/tuijian"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="推荐"
+            android:gravity="center"
+            android:textColor="#000000"/>
 
-      <TextView
-          android:id="@+id/zuixin"
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:layout_weight="1"
-          android:text="最新"
-          android:gravity="center"
-          android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/zuixin"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="最新"
+            android:gravity="center"
+            android:textColor="#000000"/>
 
-      <TextView
-          android:id="@+id/guanzhu"
-          android:layout_width="fill_parent"
-          android:layout_height="fill_parent"
-          android:layout_weight="1"
-          android:text="关注"
-          android:gravity="center"
-          android:textColor="#000000"/>
+        <TextView
+            android:id="@+id/guanzhu"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="关注"
+            android:gravity="center"
+            android:textColor="#000000"/>
 
-   </LinearLayout>
+    </LinearLayout>
 
+    <ImageView
+        android:id="@+id/down_Line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line"
+        android:scaleType="matrix"/>
 
     <android.support.v4.view.ViewPager
+        android:id="@+id/viewpage"
         android:layout_width="wrap_content"
-        android:layout_height="1dp">
-
-    </android.support.v4.view.ViewPager>
-
-   <ImageView
-       android:id="@+id/down_Line"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:src="@drawable/line"
-       android:scaleType="matrix"/>
-
-    <FrameLayout
-        android:id="@+id/frag_of_all2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:flipInterval="30"
+        android:persistentDrawingCache="animation"
+        />
 
 </LinearLayout>
