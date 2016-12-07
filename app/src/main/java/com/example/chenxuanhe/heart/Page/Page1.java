@@ -35,7 +35,7 @@ public class Page1 extends android.support.v4.app.Fragment {
         View view = inflater.inflate(R.layout.view_tuijian,container,false);
 
         for (int i =0;i<100;i++) {
-            gongjus.add(new Gongju("111111"));
+            gongjus.add(new Gongju("11111111"));
             gongjus.add(new Gongju("!331311313"));
         }
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_tuijian); //拿到recyclerview

@@ -4,6 +4,7 @@ package com.example.chenxuanhe.heart;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -15,6 +16,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.chenxuanhe.heart.Adapter.MyPagerAdapter;
+import com.example.chenxuanhe.heart.Page.Page1;
+import com.example.chenxuanhe.heart.Page.Page2;
+import com.example.chenxuanhe.heart.Page.Page3;
 
 import java.util.ArrayList;
 
@@ -26,6 +30,7 @@ import java.util.ArrayList;
 public class FragmentActivity1  extends android.support.v4.app.Fragment implements
         ViewPager.OnPageChangeListener,View.OnClickListener {
 
+    private ArrayList<Fragment> fragments;
 
     private ViewPager viewPager;
     private TextView tuijian;
@@ -34,6 +39,10 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
     private ImageView line;
     private ArrayList<View> listViews;
 
+    public Page1 page1;
+    public Page2 page2;
+    public Page3 page3;
+
     private int currIndex= 0 ;
     private int bmpWidth;
     private int pianyiliang = 0;
@@ -41,23 +50,24 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
     private int two = 0;
 
 
-    public FragmentActivity1() {
-    }
+    public FragmentActivity1() {}
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg_content_one, container, false);
+
         viewPager = (ViewPager) view.findViewById(R.id.viewpage);
         line = (ImageView) view.findViewById(R.id.down_Line);
         tuijian = (TextView) view.findViewById(R.id.tuijian);
         zuixin = (TextView) view.findViewById(R.id.zuixin);
         guanzhu = (TextView) view.findViewById(R.id.guanzhu);
+
         initView();
+
         return view;
     }
 
     private void initView() {
-
 
         bmpWidth = BitmapFactory.decodeResource(getResources(), R.drawable.line).getWidth();
         DisplayMetrics dm = new DisplayMetrics();
@@ -71,11 +81,19 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         two = one * 2;
 
         listViews = new ArrayList<View>();
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        listViews.add(inflater.inflate(R.layout.view_tuijian, null, false));
-        listViews.add(inflater.inflate(R.layout.view_zuixin, null, false));
-        listViews.add(inflater.inflate(R.layout.view_guanzhu, null, false));
-        viewPager.setAdapter(new MyPagerAdapter(listViews));
+      //  LayoutInflater inflater = getActivity().getLayoutInflater();
+
+        fragments = new ArrayList<Fragment>();
+        fragments.add(new Page1());
+        fragments.add(new Page2());
+        fragments.add(new Page3());
+
+      //  listViews.add(inflater.inflate(R.layout.view_tuijian, null, false));
+      //  listViews.add(inflater.inflate(R.layout.view_zuixin, null, false));
+       // listViews.add(inflater.inflate(R.layout.view_guanzhu, null, false));
+
+        MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager(),fragments);
+        viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
 
         tuijian.setOnClickListener(this);

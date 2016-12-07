@@ -35,7 +35,7 @@ public class Page2 extends android.support.v4.app.Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_zuixin);
         mswiperefresh2 = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout2);
 
-        gongjus.add(new Gongju("adadd"));
+        gongjus.add(new Gongju("222222222222"));
         gongjus.add(new Gongju("daaaaaaaaaaaaaaaaa"));
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setHasFixedSize(true);

@@ -35,7 +35,7 @@ public class Page3 extends android.support.v4.app.Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview_guanzhu);
         mswiperefresh3 = (SwipeRefreshLayout) view.findViewById(R.id.swipeLayout3);
 
-        gongjus.add(new Gongju("111111"));
+        gongjus.add(new Gongju("3333333333"));
         gongjus.add(new Gongju("!331311313"));
         gongjus.add(new Gongju("!331311313"));
         gongjus.add(new Gongju("!331311313"));
