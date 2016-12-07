@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.chenxuanhe.heart.Adapter.Adapter1;
+import com.example.chenxuanhe.heart.Adapter.RecyclerViewAdapter;
 import com.example.chenxuanhe.heart.R;
 import com.example.chenxuanhe.heart.Util.Gongju;
 
@@ -23,7 +23,7 @@ public class Page2 extends android.support.v4.app.Fragment {
 
     private SwipeRefreshLayout mswiperefresh2;
     private RecyclerView recyclerView;
-    private Adapter1 adapter1;
+    private RecyclerViewAdapter recyclerViewAdapter;
     private List<Gongju> gongjus = new ArrayList<>();
 
     public Page2(){}
@@ -37,10 +37,12 @@ public class Page2 extends android.support.v4.app.Fragment {
 
         gongjus.add(new Gongju("222222222222"));
         gongjus.add(new Gongju("daaaaaaaaaaaaaaaaa"));
+        gongjus.add(new Gongju("daaaaaaaaaaaaaaaaa"));
+        gongjus.add(new Gongju("daaaaaaaaaaaaaaaaa"));
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setHasFixedSize(true);
-        adapter1 = new Adapter1(getContext(),gongjus);
-        recyclerView.setAdapter(adapter1);
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext(),gongjus);
+        recyclerView.setAdapter(recyclerViewAdapter);
 
         //使加载dialog消失
         mswiperefresh2.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){

@@ -28,7 +28,6 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
         return fg.size();
     }
 
-
     @Override
     public Fragment getItem(int position) {
         return fg.get(position);

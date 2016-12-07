@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.chenxuanhe.heart.Adapter.Adapter1;
+import com.example.chenxuanhe.heart.Adapter.RecyclerViewAdapter;
 import com.example.chenxuanhe.heart.R;
 import com.example.chenxuanhe.heart.Util.Gongju;
 
@@ -24,7 +24,7 @@ public class Page3 extends android.support.v4.app.Fragment {
     private SwipeRefreshLayout mswiperefresh3;
     private RecyclerView recyclerView;
     private List<Gongju> gongjus = new ArrayList<>();
-    private Adapter1 adapter1;
+    private RecyclerViewAdapter recyclerViewAdapter;
 
 
     public Page3(){}
@@ -42,8 +42,8 @@ public class Page3 extends android.support.v4.app.Fragment {
         gongjus.add(new Gongju("!331311313"));
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         recyclerView.setHasFixedSize(true);
-        adapter1 = new Adapter1(getContext(),gongjus);
-        recyclerView.setAdapter(adapter1);
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext(),gongjus);
+        recyclerView.setAdapter(recyclerViewAdapter);
 
 
 

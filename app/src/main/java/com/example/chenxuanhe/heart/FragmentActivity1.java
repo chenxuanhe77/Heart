@@ -81,20 +81,21 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         two = one * 2;
 
         listViews = new ArrayList<View>();
-      //  LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        fragments = new ArrayList<Fragment>();
+        fragments = new ArrayList<Fragment>();//把三个fragment加进viewpager加载
         fragments.add(new Page1());
         fragments.add(new Page2());
         fragments.add(new Page3());
 
-      //  listViews.add(inflater.inflate(R.layout.view_tuijian, null, false));
-      //  listViews.add(inflater.inflate(R.layout.view_zuixin, null, false));
-       // listViews.add(inflater.inflate(R.layout.view_guanzhu, null, false));
-
+        //设置适配
         MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager(),fragments);
         viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(0);
+
+        //  LayoutInflater inflater = getActivity().getLayoutInflater();
+        //  listViews.add(inflater.inflate(R.layout.view_tuijian, null, false));
+        //  listViews.add(inflater.inflate(R.layout.view_zuixin, null, false));
+        // listViews.add(inflater.inflate(R.layout.view_guanzhu, null, false));
 
         tuijian.setOnClickListener(this);
         zuixin.setOnClickListener(this);
@@ -122,6 +123,10 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         }
     }
 
+    /**
+     * 下滑标图片的移动
+     * @param index
+     */
     @Override
     public void onPageSelected(int index){
         Animation animation = null;
