@@ -80,9 +80,9 @@ public class FragmentActivity1  extends android.support.v4.app.Fragment implemen
         one = pianyiliang * 2 + bmpWidth;
         two = one * 2;
 
-        listViews = new ArrayList<View>();
+        listViews = new ArrayList<>();
 
-        fragments = new ArrayList<Fragment>();//把三个fragment加进viewpager加载
+        fragments = new ArrayList<>();//把三个fragment加进viewpager加载
         fragments.add(new Page1());
         fragments.add(new Page2());
         fragments.add(new Page3());

@@ -4,6 +4,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/Tool_bar_my_dengji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FB8C8C"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/centertitle_dengji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="11111"
+            android:textSize="20dp" />
+    </android.support.v7.widget.Toolbar>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +48,7 @@
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
                 android:text="男"
-                android:textSize="20dp" />
+                 />
 
             <TextView
                 android:id="@+id/txt_cardname"
@@ -60,7 +79,7 @@
 
 
         <TextView
-            android:id="@+id/txt_cardmessage"
+            android:id="@+id/at_card_msg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="dsdddddddddddddddd" />
@@ -81,13 +100,13 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/card_goodjob"
+            android:id="@+id/at_card_goodjob"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/goodjob" />
 
         <TextView
-            android:id="@+id/goodjob_number"
+            android:id="@+id/at_goodjob_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -95,7 +114,7 @@
             android:textSize="20dp" />
 
         <ImageView
-            android:id="@+id/card_attention"
+            android:id="@+id/at_card_attention"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -110,6 +129,11 @@
         android:layout_marginTop="20dp"
         android:background="#000000" />
 
+    <EditText
+        android:id="@+id/at_card_edit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -117,7 +141,7 @@
 
         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view"
+            android:id="@+id/at_card_reply"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"

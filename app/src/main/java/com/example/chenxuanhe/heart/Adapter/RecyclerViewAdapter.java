@@ -1,6 +1,7 @@
 package com.example.chenxuanhe.heart.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.chenxuanhe.heart.CardViewActivity;
 import com.example.chenxuanhe.heart.R;
 import com.example.chenxuanhe.heart.Util.Gongju;
 
@@ -65,7 +67,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         //点击关注，触发事件操作
         //利用flag 直接判断，不再需要累加奇偶计算
-        holder.attention.setOnClickListener(new View.OnClickListener() {
+       /* holder.attention.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -81,7 +83,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     flag = true;
                 }
             }
-        });
+        });*/
 
         //点击点赞，触发事件操作
         holder.goodjob.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +101,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, CardViewActivity.class);
+                intent.putExtra("msg",st);
+                mContext.startActivity(intent);
                 Toast.makeText(mContext, "这是第" + (finalPosition + 1) + "个cardviw,信息是" + st, Toast.LENGTH_SHORT).show();
             }
         });
@@ -128,9 +134,28 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             goodjob = (ImageView) v.findViewById(R.id.card_goodjob);    //点赞image
             goodjob_number = (TextView) v.findViewById(R.id.goodjob_number);//点赞数字text
             cardView = (CardView) v.findViewById(R.id.card_view);
+
+            attention.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(flag){
+                        Toast.makeText(mContext, "取消关注~变心了~", Toast.LENGTH_SHORT).show();
+                        attention.setImageResource(R.drawable.disattention);
+                        attention.invalidate();
+                        flag = false;
+                    }else {
+                        Toast.makeText(mContext, "关注了呦！尽在关注中", Toast.LENGTH_SHORT).show();
+                        attention.setImageResource(R.drawable.attention);
+                        attention.invalidate();
+                        flag = true;
+                    }
+                }
+            });
         }
 
     }
 
 }
+
+
 
