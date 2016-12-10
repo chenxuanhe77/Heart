@@ -129,10 +129,6 @@
         android:layout_marginTop="20dp"
         android:background="#000000" />
 
-    <EditText
-        android:id="@+id/at_card_edit"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"

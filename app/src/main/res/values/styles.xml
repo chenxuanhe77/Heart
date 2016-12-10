@@ -12,5 +12,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    
+    <style name="reply_menu_enter_exit" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/reply_exit</item>
+        <item name="android:windowExitAnimation">@anim/reply_enter</item>
+    </style>
 
 </resources>
