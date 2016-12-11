@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -19,6 +21,12 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.chenxuanhe.heart.Adapter.ReplyRecyclerAdapter;
+import com.example.chenxuanhe.heart.Util.ReplyUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ChenXuanHe on 2016/12/7.
@@ -38,6 +46,10 @@ public class CardViewActivity extends AppCompatActivity {
     private PopupWindow mpopupWindow;
     private CardView card_commit;
 
+    private RecyclerView recyclerView;
+    private List<ReplyUtil> replyUtilList = new ArrayList<>();
+    private ReplyRecyclerAdapter replyRecyclerAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +59,8 @@ public class CardViewActivity extends AppCompatActivity {
         setTitle();
     }
 
-    private void showPopupWindow(){
-        View content = LayoutInflater.from(CardViewActivity.this).inflate(R.layout.popuplayout,null);
+    private void showPopupWindow() {
+        View content = LayoutInflater.from(CardViewActivity.this).inflate(R.layout.popuplayout, null);
 
         card_commit = (CardView) content.findViewById(R.id.at_card_commit);
         edit_card = (EditText) content.findViewById(R.id.at_card_edit);
@@ -56,10 +68,17 @@ public class CardViewActivity extends AppCompatActivity {
         edit_card.setImeOptions(EditorInfo.IME_ACTION_SEND);
         edit_card.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_SEND){
-                    Toast.makeText(CardViewActivity.this, "ddddddddd", Toast.LENGTH_SHORT).show();
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                /**
+                 * 这才是edittext 属性改变回车的正确写法if（）内容
+                 */
+                if (actionId == EditorInfo.IME_ACTION_SEND || (keyEvent != null && keyEvent.
+                        getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                     card_commit.performClick();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(edit_card.getWindowToken(), 0);
+                    mpopupWindow.dismiss();
+                    return false;
                 }
                 return false;
             }
@@ -67,25 +86,32 @@ public class CardViewActivity extends AppCompatActivity {
 
 
         mpopupWindow = new PopupWindow(content, ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT,true);//content是子布局，pppwindow的布局
+                ViewGroup.LayoutParams.MATCH_PARENT, true);//content是子布局，pppwindow的布局
         mpopupWindow.setContentView(content);
-        View mainview = LayoutInflater.from(CardViewActivity.this).inflate(R.layout.activity_card_view,null);
-        //mainview才是cardview的主布局，在这个上面显示pppwindow
+        View mainview = LayoutInflater.from(CardViewActivity.this).inflate(R.layout.activity_card_view, null);
+        /**
+         * mainview才是cardview的主布局，在这个上面显示pppwindow
+         */
         mpopupWindow.setAnimationStyle(R.style.reply_menu_enter_exit);
-        content.clearAnimation();
+        content.clearAnimation();//清除动画
 
-        //防止PopupWindow被软件盘挡住
+        /**
+         * 防止PopupWindow被软件盘挡住
+         */
         mpopupWindow.setSoftInputMode(PopupWindow.INPUT_METHOD_NEEDED);
         mpopupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
+        mpopupWindow.showAtLocation(mainview, Gravity.CENTER_VERTICAL, 0, 0);
 
-        mpopupWindow.showAtLocation(mainview, Gravity.CENTER_VERTICAL,0,0);
-
-
+        /**
+         * 提交点击事件
+         */
         card_commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(CardViewActivity.this, "daadadadad", Toast.LENGTH_SHORT).show();
+                sendCommit();
+                mpopupWindow.dismiss();
+
             }
         });
         edit_card.setVisibility(View.VISIBLE);
@@ -93,11 +119,25 @@ public class CardViewActivity extends AppCompatActivity {
         edit_card.setFocusableInTouchMode(true);
         edit_card.requestFocus();
         edit_card.requestFocusFromTouch();//对应的View支持Focus，不支持在Touch模式下的Focus中也行获取焦点
-        //三句一起，在这才能显示软键盘，一般1.2局就能显示
+        /**
+         * 三句一起，在这才能显示软键盘，一般1.2局就能显示
+         */
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInputFromInputMethod(edit_card.getWindowToken(), 0);
         imm.toggleSoftInput(100, InputMethodManager.HIDE_NOT_ALWAYS);//切换软键盘的显示与隐藏
 
+    }
+
+    public  void sendCommit() {
+        String abc = edit_card.getText().toString().trim();
+        if (abc.equals("")) {
+            Toast.makeText(CardViewActivity.this, "内容不能为空~", Toast.LENGTH_SHORT).show();
+        } else {
+            ReplyUtil reply = new ReplyUtil();
+            reply.setReplymessage(abc);
+            Toast.makeText(CardViewActivity.this, "" + abc, Toast.LENGTH_SHORT).show();
+            replyRecyclerAdapter.commmitcontent(reply);
+        }
     }
 
     /**
@@ -109,6 +149,11 @@ public class CardViewActivity extends AppCompatActivity {
         card_goodjob = (ImageView) findViewById(R.id.at_card_goodjob);
         card_goodjob_number = (TextView) findViewById(R.id.at_goodjob_number);
         card_reply = (CardView) findViewById(R.id.at_card_reply);
+        recyclerView = (RecyclerView) findViewById(R.id.reply_recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(CardViewActivity.this));
+        recyclerView.setHasFixedSize(true);
+        replyRecyclerAdapter = new ReplyRecyclerAdapter(CardViewActivity.this,replyUtilList);
+        recyclerView.setAdapter(replyRecyclerAdapter);
 
         Intent intent = getIntent();
         message = intent.getStringExtra("msg");
@@ -154,7 +199,6 @@ public class CardViewActivity extends AppCompatActivity {
         });*/
 
     }
-
 
 
     public void setTitle() {

@@ -8,10 +8,10 @@
         android:id="@+id/Tool_bar_my_dengji"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FB8C8C"
-        android:minHeight="?attr/actionBarSize"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:background="#FB8C8C"
+        android:minHeight="?attr/actionBarSize">
 
         <TextView
             android:id="@+id/centertitle_dengji"
@@ -47,8 +47,7 @@
                 android:layout_gravity="top"
                 android:paddingLeft="5dp"
                 android:paddingTop="5dp"
-                android:text="男"
-                 />
+                android:text="男" />
 
             <TextView
                 android:id="@+id/txt_cardname"
@@ -129,18 +128,23 @@
         android:layout_marginTop="20dp"
         android:background="#000000" />
 
-
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reply_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
 
         <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/at_card_reply"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
             android:layout_marginBottom="2dp"
             android:layout_marginTop="5dp"
             android:clickable="true"
@@ -148,6 +152,7 @@
             app:cardBackgroundColor="#FF4081"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -166,7 +171,7 @@
 
         </android.support.v7.widget.CardView>
 
-    </RelativeLayout>
 
+    </LinearLayout>
 
 </LinearLayout>

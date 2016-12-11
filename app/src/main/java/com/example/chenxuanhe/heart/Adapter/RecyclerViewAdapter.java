@@ -85,7 +85,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });*/
 
-        //点击点赞，触发事件操作
+        /**
+         * /点击点赞，触发事件操作
+         */
         holder.goodjob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +97,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             }
         });
 
-        //CardView点击事件，之后会显示内容等详细信息
+        /**
+         * CardView点击事件，之后会显示内容等详细信息
+         */
         final int finalPosition = position;
         final String st= p.txtmessage;
         holder.cardView.setOnClickListener(new View.OnClickListener() {

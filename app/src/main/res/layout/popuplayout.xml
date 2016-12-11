@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="50dp"
-    android:background="#66000000">
+    android:background="#99000000">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,6 +15,8 @@
         android:layout_alignParentStart="true">
 
         <EditText
+            android:textColorHint="@color/colorTitle"
+            android:hint="请输入内容"
             android:textColor="@color/colorAccent"
             android:imeOptions="actionSend"
             android:id="@+id/at_card_edit"
