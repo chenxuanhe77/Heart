@@ -35,7 +35,7 @@ public class ReplyRecyclerAdapter extends RecyclerView.Adapter<ReplyRecyclerAdap
     @Override
     public void onBindViewHolder(ReplyViewHolder holder, int position) {
         ReplyUtil replyUtil = replyUtilsList.get(position);
-        holder.reply_message.setText(replyUtil.getReplymessage());
+        holder.reply_message.setText(": "+replyUtil.getReplymessage());
     }
 
     @Override

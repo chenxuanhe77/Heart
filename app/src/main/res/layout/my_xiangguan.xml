@@ -23,4 +23,18 @@
             android:textSize="20dp" />
     </android.support.v7.widget.Toolbar>
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/my_xiangguan_swip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_xiangguan_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
 </LinearLayout>
